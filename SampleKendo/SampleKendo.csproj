@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201604161658435_first.Designer.cs">
       <DependentUpon>201604161658435_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604200716026_AddressTable.cs" />
+    <Compile Include="Migrations\201604200716026_AddressTable.Designer.cs">
+      <DependentUpon>201604200716026_AddressTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -296,6 +300,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Person\Index.cshtml" />
+    <None Include="Views\Address\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +316,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604161658435_first.resx">
       <DependentUpon>201604161658435_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604200716026_AddressTable.resx">
+      <DependentUpon>201604200716026_AddressTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

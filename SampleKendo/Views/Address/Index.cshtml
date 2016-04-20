@@ -1,13 +1,12 @@
-﻿@using Kendo.Mvc.UI
+﻿@model int
+@using Kendo.Mvc.UI
 @using SampleKendo.Controllers
-@(Html.Kendo().Grid<PersonViewModel>()
+@(Html.Kendo().Grid<AddressViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
         columns.Bound(p => p.Id);
-        columns.Bound(p => p.FirstName).Width(120);
-        columns.Bound(p => p.LastName).Width(120);
-        columns.Bound(p => p.Id).ClientTemplate("<a href='" + Url.Action("Index", "Address",new {id= "#=data.Id#" }) + "'>آدرس ها</a>").Width(120);
+        columns.Bound(p => p.AddressDesc).Width(120);
         columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
     })
     .ToolBar(toolbar => toolbar.Create())
@@ -25,10 +24,10 @@
             model.Id(p => p.Id);
             model.Field(a => a.Id).Editable(false);
         })
-        .Create(update => update.Action("Create", "Person"))
-        .Read(read => read.Action("Get", "Person"))
-        .Update(update => update.Action("Edit", "Person"))
-        .Destroy(update => update.Action("Remove", "Person"))
+        .Create(update => update.Action("Create", "Address", new { personId = Model }))
+        .Read(read => read.Action("Get", "Address", new { personId = Model }))
+        .Update(update => update.Action("Edit", "Address"))
+        .Destroy(update => update.Action("Remove", "Address"))
     )
 )
 <script type="text/javascript">
@@ -37,7 +36,7 @@
             var message = "Errors:\n";
             $.each(e.errors, function (key, value) {
                 if ('errors' in value) {
-                    $.each(value.errors, function() {
+                    $.each(value.errors, function () {
                         message += this + "\n";
                     });
                 }

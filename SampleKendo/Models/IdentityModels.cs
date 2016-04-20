@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -25,6 +27,19 @@ namespace SampleKendo.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public virtual ICollection<Address> Addresses { get; set; }
+    }
+
+    public class Address
+    {
+        public int Id { get; set; }
+
+        public string AddressDesc { get; set; }
+
+        public int PersonId { get; set; }
+
+        public virtual Person Person { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -40,5 +55,7 @@ namespace SampleKendo.Models
         }
 
         public DbSet<Person> Persons { get; set; } 
+
+        public DbSet<Address> Addresses { get; set; } 
     }
 }
